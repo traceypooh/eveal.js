@@ -17,7 +17,8 @@ function require(file, callback){
 }
 
 
-require('reveal.js/lib/js/head.min.js', function() {
+var BASE = 'reveal.js/'
+require(BASE + 'lib/js/head.min.js', function() {
 
   // slurp the current body text (markdown) into a string,
   // then rebuild the body with the proper markup wrapping the markdown
@@ -54,12 +55,12 @@ require('reveal.js/lib/js/head.min.js', function() {
 
   // get the styles and theme in place
   var loads = [
-    'reveal.js/css/reveal.css',       // main CSS
-    'sky.css',                        // desired theme
-    'reveal.js/lib/css/zenburn.css',  // for syntax highlighting of code
+    BASE + 'css/reveal.css',       // main CSS
+    BASE + '../sky.css',           // desired theme
+    BASE + 'lib/css/zenburn.css',  // for syntax highlighting of code
     (window.location.search.match( /print-pdf/gi ) ? // printing and PDF exports
-      'reveal.js/css/print/pdf.css' :
-      'reveal.js/css/print/paper.css')
+      BASE + 'css/print/pdf.css' :
+      BASE + 'css/print/paper.css')
   ];
   for (var idx in loads) {
 		var link = document.createElement('link');
@@ -70,16 +71,16 @@ require('reveal.js/lib/js/head.min.js', function() {
   }
 
 
-  require('reveal.js/js/reveal.js', function(){
+  require(BASE + 'js/reveal.js', function(){
     // More info about config & dependencies:
     // - https://github.com/hakimel/reveal.js#configuration
     // - https://github.com/hakimel/reveal.js#dependencies
     Reveal.initialize({controls: true,  progress: false,  history: true,  center: true,  margin: 0.1,
       dependencies: [
-        { src: 'reveal.js/plugin/markdown/marked.js' },
-        { src: 'reveal.js/plugin/markdown/markdown.js' },
-        { src: 'reveal.js/plugin/notes/notes.js', async: true },
-        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        { src: BASE + 'plugin/markdown/marked.js' },
+        { src: BASE + 'plugin/markdown/markdown.js' },
+        { src: BASE + 'plugin/notes/notes.js', async: true },
+        { src: BASE + 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
       ]
     });
   });
